@@ -6,15 +6,15 @@
     "details": {
       "steps": [
         {
-          "title": "Step 1",
+          "title": "Step 1 : creating your docker containers",
           "text": "step_docker.md"
         },
         {
-          "title": "Step 2",
+          "title": "Step 2 : setting your first sampler dashboard",
           "text": "step_sampler.md"
         },
         {
-          "title": "Step 3",
+          "title": "Step 3 : creating your docker monitoring dashboard",
           "text": "step_creating_docker_dashboard.md"
         }
       ],
@@ -23,12 +23,12 @@
       },
       "finish": {
         "text": "finish.md"
+      },
+      "assets":{
+        "client": [
+          { "file": "*", "target": "~/" }
+        ]
       }
-    },
-    "assets":{
-      "client": [
-				{ "file": "*", "target": "~/" }
-			]
     },
     "environment": {
       "uilayout": "terminal",

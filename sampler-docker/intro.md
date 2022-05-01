@@ -14,7 +14,7 @@ Containers are dynamic, and monitoring containers is important to :
 [Sampler](https://sampler.dev/) is a monitoring tool to visualize, alert and execute shell commands. It is configured with a simple yaml file, is serverless and easy to set up, contrary to more advanced system like Prometheus with Grafana. 
 It is a tool adapted for the development phase.
 <br>
-<img src="assets/demo.jpg" width="50%" height="50%">
+<img src="assets/demo.jpg" width="80%">
 
 ## What you will learn 
 - Monitoring docker containers

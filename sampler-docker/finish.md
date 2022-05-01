@@ -1,6 +1,6 @@
 Congratulations!
 
-You have now finished the tutorial and should be more familiar with Heroku and know the basics of how to deploy using Heroku. 
-If you want to start preparing your own application for deployment using Heroku, you can follow [this](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment) tutorial on how to prepare your codebase for deployment using Heroku.
+You have now finished the tutorial and should be more familiar with sampler
+For more information refer to [the site](https://sampler.dev/) and don't hesitate to contribute to this nice open source project. 
 
 Thank you for your time!

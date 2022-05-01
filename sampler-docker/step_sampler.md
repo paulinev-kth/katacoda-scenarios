@@ -31,13 +31,13 @@ And run it `sampler -c config.yml`{{execute}}
 Small reminder: to switch from mode file edition to command, press "Escape", and to Vim editor press ":w" and then ":q" in command mode.  
 
 To go back to the terminal press "q"
-You will see in your terminal a simple dashboard with "Hello world" written. (**mettre photo à la place**)
+You will see in your terminal a simple dashboard with "Hello world" written. 
 
 
 ## Sampler boxes
 As you can see a sampler dashboard is composed of several boxes, as you can see below
 <br>
-<img src="assets/demo.jpg" width="50%" height="50%">
+<img src="assets/demo.jpg" width="80%">
 
 You can choose among different components :
 - Text :
@@ -64,7 +64,7 @@ And then run it : `sampler -c config.yml`{{execute}}
 
 Your first dashboard 
 <br>
-<img src="assets/first_dashboard.jpg" width="50%" height="50%">
+<img src="assets/first_dashboard.jpeg" width="80%">
 
 As you can see from our two component examples, there is a 'title' attribute and the 'sample' attribute. There are the two mandatory attributes to every component. The 'sample' attribute takes a shell command as a value, the same one we typed before. 
 

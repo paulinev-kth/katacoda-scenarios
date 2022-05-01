@@ -74,7 +74,7 @@ textboxes:
     rate-ms: 500
     position: [[40, 10], [20, 10]]
     sample: docker ps --filter "status=exited" | awk '{sum += 1} END {print sum-1}' && echo && docker ps --filter "status=exited" --format "table {{.ID}}\t{{.Image}}"
-```{{execute}}
+```{{copy}}
 
 
 ## Printing the Redis data
@@ -83,7 +83,7 @@ This one looked at the data in our redis store. One should pay attention that th
 
 ```yaml
 textboxes:
-- title: Redis Data
+  - title: Redis Data
     position: [[60, 0], [20, 5]]
     sample: echo Keys/Values in $containerName
     border: true
@@ -102,5 +102,5 @@ You can try to add key value to your container in another terminl and see the da
 
 You should now have a nice dashboard:
 <br>
-<img src="assets/final_dashboard.jpg" width="50%" height="50%">
+<img src="assets/final_dashboard.jpeg" width="80%">
 
