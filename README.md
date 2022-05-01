@@ -1,10 +1,15 @@
-# Interactive Katacoda Scenarios
+# Katakoda Interactive Scenarios
+This repo is used to host a Katakoda Scenarios.
 
-[![](http://shields.katacoda.com/katacoda/pauline/count.svg)](https://www.katacoda.com/pauline "Get your profile on Katacoda.com")
+This repo contains the following scenario:
+Monitoring docker containers with Sampler
 
-Visit https://www.katacoda.com/pauline to view the profile and interactive scenarios
+This scenario contains the following steps:
 
-### Writing Scenarios
-Visit https://www.katacoda.com/docs to learn more about creating Katacoda scenarios
+    Step 1 - Get familiar with Docker
+    Step 2 - Get familiar with Sampler
 
-For examples, visit https://github.com/katacoda/scenario-example
+To try out the Katacoda please visit this **link**.
+
+Authors
+Chloé Porion & Pauline Vaillant
