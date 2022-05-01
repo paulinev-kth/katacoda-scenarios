@@ -5,10 +5,11 @@ The main ressources monitored are generally
 - network
 - disk read/rewrtite 
   
-These ressouces can be seen with the command `docker stats`, but we will now put them into the config file
+These ressouces can be seen with the command `docker stats`, but we will now put them into the config file.
 
+We will now create our docker monitoring dashboard, you can remove the previous components of your config file (it sould only contains the variable part).
 ## Memory and CPU usage
-This sampler component will give you timechart for each of the ressource
+This sampler component will give you timechart for each of the ressource:
 ```yaml
 runcharts:
   - title: CPU Redis container
@@ -60,9 +61,8 @@ This shell command concatenates different command
  - `docker stats --no-stream --format {{.CPUPerc}} | awk '{sum += $0} END {print sum"%"}'` sums the CPU usage of all the containers
 
 
-With these components, you can see your running containers and the stopped containers. 
+With these textboxes components, you can see your running containers and the stopped containers. There should only be one enter for each kind of component ("textboxes" is not repeated).
 ```yaml
-textboxes:
   - title: Docker stats
     position: [[0, 20], [60, 15]]
     sample: docker stats --no-stream
@@ -78,26 +78,25 @@ textboxes:
 
 
 ## Printing the Redis data
-As we can exectute any shell command, we can create more complicated component
-This one looked at the data in our redis store. One should pay attention that the CPU usage increase everytime, the updated are fetched
+As we can exectute any shell command, we can create more complicated component.
+This one looked at the data in our redis store. One should pay attention that the CPU usage increases everytime, the updated are fetched.
 
 ```yaml
-textboxes:
   - title: Redis Data
     position: [[60, 0], [20, 5]]
     sample: echo Keys/Values in $containerName
     border: true
   - title: Keys
-    rate-ms: 10000
+    rate-ms: 5000
     position: [[60, 5], [10, 30]]
     sample: docker exec $containerName redis-cli keys \*
   - title: Values
-    rate-ms: 10000
+    rate-ms: 5000
     position: [[70, 5], [10, 30]]
     sample: docker exec $containerName redis-cli keys \* | while read line ; do docker exec $containerName redis-cli get $line ; done
 ```{{copy}}
 
-You can try to add key value to your container in another terminl and see the data changed.
+You can try to add key value to your container in another terminl and see the data changed within 5s, the updating time.
 `docker exec myFirstRedisContainer redis-cli set apple 50kr`{{execute}}
 
 You should now have a nice dashboard:

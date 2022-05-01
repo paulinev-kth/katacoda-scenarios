@@ -1,8 +1,7 @@
 We will use sampler to monitor dockers containers. We will use simple [Redis](https://hub.docker.com/_/redis/) containers. Redis is an open source key-value store that functions as a data structure server.
 
-It is aldready installed in the system.
+To create and start a redis container. Docker will pull the redis container image, it can take a few minutes. 
 
-To create and start a redis container, execute:
 
 `docker run -d --name myFirstRedisContainer redis `{{execute}} 
 
