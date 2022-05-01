@@ -17,6 +17,6 @@ To add a value to our Redis store :
 
 You can see all the values store by
 
-`docker exec myFirstRedisContainer redis-cli keys \* `{{copy}}
+`docker exec myFirstRedisContainer redis-cli keys \* `{{execute}}
 
 

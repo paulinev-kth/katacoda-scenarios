@@ -33,8 +33,7 @@ runcharts:
       - label: Memory in %
         color: 78
         sample: docker stats $containerName --no-stream --format {{.MemPerc}} | cut -d '%' -f 1
-```
-{{copy}}
+```{{copy}}
 
 This config defined the two runchars. We have aldready seen the label 'title' and 'sample'. The label 'position' defines where the component should be in the dashboard. The place and size of a component can also be changed with the arrows one the dashboard is running. The label 'rate-ms' gives the frequency of the update of the data. 
 So the shell command `docker stats $containerName --no-stream --format {{.CPUPerc}} | cut -d '%' -f 1` is based on the shell command seen above. We add the `--no-stream` property as sampler takes care of the update. The last part `--format {{.CPUPerc}} | cut -d '%' -f 1` enables to filter the data to keep only the CPU percentage and, to split that text with the separator "%", and to keep the only first part as sampler is expecting a number and not a percentage. 
@@ -53,8 +52,7 @@ textboxes:
     rate-ms: 500
     position: [[25, 10], [15, 10]]
     sample: echo Container $containerName && docker stats $containerName --no-stream  --format {{.MemPerc}} && echo '\nAll containers' && docker stats --no-stream --format {{.MemPerc}} | awk '{sum += $0} END {print sum"%"}'
-```
-{{copy}}
+```{{copy}}
 `echo Container $containerName && docker stats $containerName --no-stream --format {{.CPUPerc}} && echo '\nAll containers' && docker stats --no-stream --format {{.CPUPerc}} | awk '{sum += $0} END {print sum"%"}'`
 This shell command concatenates different command
  - `echo Container $containerName` to display the text
@@ -76,8 +74,7 @@ textboxes:
     rate-ms: 500
     position: [[40, 10], [20, 10]]
     sample: docker ps --filter "status=exited" | awk '{sum += 1} END {print sum-1}' && echo && docker ps --filter "status=exited" --format "table {{.ID}}\t{{.Image}}"
-```
-{{execute}}
+```{{execute}}
 
 
 ## Printing the Redis data
@@ -98,8 +95,12 @@ textboxes:
     rate-ms: 10000
     position: [[70, 5], [10, 30]]
     sample: docker exec $containerName redis-cli keys \* | while read line ; do docker exec $containerName redis-cli get $line ; done
-```
+```{{copy}}
 
 You can try to add key value to your container in another terminl and see the data changed.
 `docker exec myFirstRedisContainer redis-cli set apple 50kr`{{execute}}
+
+You should now have a nice dashboard:
+<br>
+<img src="assets/final_dashboard.jpg" width="50%" height="50%">
 

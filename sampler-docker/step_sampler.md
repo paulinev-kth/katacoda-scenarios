@@ -5,8 +5,7 @@ We will do the installaing on an linux OS. For other OS, see the sampler documen
 ```
 sudo wget https://github.com/sqshq/sampler/releases/download/v1.1.0/sampler-1.1.0-linux-amd64 -O /usr/local/bin/sampler
 sudo chmod +x /usr/local/bin/sampler 
-``` 
-{{execute}}
+```{{execute}}
 Now run the command :
 `sampler --help`{{execute}}
 
@@ -24,11 +23,11 @@ To create the file :
 You can now edit the file with Vim or with the IDE.
 
 ```yaml
-asciiboxes
+asciiboxes:
   - title: Hello word
     sample: echo Hello world
-```
-And run it `sampler -c config.yaml`{{execute}}
+```{{copy}}
+And run it `sampler -c config.yml`{{execute}}
 Small reminder: to switch from mode file edition to command, press "Escape", and to Vim editor press ":w" and then ":q" in command mode.  
 
 To go back to the terminal press "q"
@@ -38,7 +37,7 @@ You will see in your terminal a simple dashboard with "Hello world" written. (**
 ## Sampler boxes
 As you can see a sampler dashboard is composed of several boxes, as you can see below
 <br>
-<img src="../demo.jpg" width="50%" height="50%">
+<img src="assets/demo.jpg" width="50%" height="50%">
 
 You can choose among different components :
 - Text :
@@ -57,12 +56,15 @@ Each component can be personalized by differents labels, for example we had abov
 Let's add to our config file to have a component that give us the keys store in our container, change the below text with your containerId.
 
 ```yaml
-textboxes
+textboxes:
   - title: Our database
     sample: docker exec myFirstRedisContainer redis-cli keys \* 
-```
-{{copy}}
-And then run it : `sampler -c config.yaml`{{execute}}
+```{{copy}}
+And then run it : `sampler -c config.yml`{{execute}}
+
+Your first dashboard 
+<br>
+<img src="assets/first_dashboard.jpg" width="50%" height="50%">
 
 As you can see from our two component examples, there is a 'title' attribute and the 'sample' attribute. There are the two mandatory attributes to every component. The 'sample' attribute takes a shell command as a value, the same one we typed before. 
 
@@ -70,9 +72,8 @@ This config file works well, but it can be improved by using variables. We can a
 ```yaml
 variables:
   containerName: myFirstRedisContainer
-```
-{{copy}}
-And replace all the written in hard copy containerName by `$containerName`, as seen above the variable can be overwritten when running the config by `sampler -e containerName=${yourNewContainerName} -c config.yaml`
+```{{copy}}
+And replace all the written in hard copy containerName by `$containerName`, as seen above the variable can be overwritten when running the config by `sampler -e containerName=${yourNewContainerName} -c config.yml`
 
 
 
