@@ -1,3 +1,4 @@
+## Creating redis containers
 We will use sampler to monitor dockers containers. We will use simple [Redis](https://hub.docker.com/_/redis/) containers. Redis is an open source key-value store that functions as a data structure server.
 
 To create and start a redis container. Docker will pull the redis container image, it can take a few minutes. 
@@ -10,6 +11,7 @@ For the purpose of our tutorial we will create a second container.
 
 With `docker ps`{{execute}} you can see all your containers that are running and you can find the id of your container. 
 
+## Adding key-value to our Redis store
 To add a value to our Redis store : 
 
 `docker exec myFirstRedisContainer redis-cli set pear 20kr`{{execute}}
