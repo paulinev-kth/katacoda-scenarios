@@ -1,4 +1,4 @@
-## Monitoring a docker container
+## Monitoring a Docker container
 The main resources monitored are generally
 - CPU
 - memory
@@ -62,7 +62,7 @@ This shell command concatenates different commands:
  - `docker stats $containerName --no-stream --format {{.CPUPerc}}` is similar to the one seen above
  - `docker stats --no-stream --format {{.CPUPerc}} | awk '{sum += $0} END {print sum"%"}'` sums the CPU usage of all the containers
 
-3 additional textboxes components can be added. One displaying the docker statistics and 2 others printing out the running and stopped containers. You can paste the following code into the "textboxes" section of your configuration file. Note that the "textboxes:" key is not added this time as there should only be one entry for each kind of component.
+3 additional textboxes components can be added. One displaying the docker statistics and 2 others printing the running and stopped containers. You can paste the following code into the "textboxes" section of your configuration file. Note that the "textboxes:" key is not added this time as there should only be one entry for each kind of component.
 ```yaml
   - title: Docker stats
     position: [[0, 20], [60, 15]]
