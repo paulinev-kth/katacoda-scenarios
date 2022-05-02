@@ -1,15 +1,15 @@
 ## Monitoring a docker container
-The main ressources monitored are generally
+The main resources  monitored are generally
 - CPU
 - memory
 - network
-- disk read/rewrtite 
+- disk read/rewrite  
   
-These ressouces can be seen with the command `docker stats`, but we will now put them into the config file.
+These resources can be seen with the command `docker stats`, but we will now put them into the config file.
 
-We will now create our docker monitoring dashboard, you can remove the previous components of your config file (it sould only contains the variable part).
+We will now create our docker monitoring dashboard, you can remove the previous components of your config file (it should only contains the variable part).
 ## Memory and CPU usage
-This sampler component will give you timechart for each of the ressource:
+This sampler component will give you a timechart for each of the resources:
 ```yaml
 runcharts:
   - title: CPU Redis container
@@ -36,11 +36,11 @@ runcharts:
         sample: docker stats $containerName --no-stream --format {{.MemPerc}} | cut -d '%' -f 1
 ```{{copy}}
 
-This config defined the two runchars. We have aldready seen the label 'title' and 'sample'. The label 'position' defines where the component should be in the dashboard. The place and size of a component can also be changed with the arrows one the dashboard is running. The label 'rate-ms' gives the frequency of the update of the data. 
-So the shell command `docker stats $containerName --no-stream --format {{.CPUPerc}} | cut -d '%' -f 1` is based on the shell command seen above. We add the `--no-stream` property as sampler takes care of the update. The last part `--format {{.CPUPerc}} | cut -d '%' -f 1` enables to filter the data to keep only the CPU percentage and, to split that text with the separator "%", and to keep the only first part as sampler is expecting a number and not a percentage. 
+This config defined the two runchars. We have already seen the label 'title' and 'sample'. The label 'position' defines where the component should be in the dashboard. The place and size of a component can also be changed with the arrows on the dashboard. The label 'rate-ms' gives the frequency of the update of the data. 
+So the shell command `docker stats $containerName --no-stream --format {{.CPUPerc}} | cut -d '%' -f 1` is based on the shell command seen above. We add the `--no-stream` property as sampler takes care of the update. The last part `--format {{.CPUPerc}} | cut -d '%' -f 1` enables to filter the data to keep only the CPU percentage. Then it splits the text with the separator "%", and keeps the only first part as sampler is expecting a number and not a percentage. 
 
 ## Global vision of all our containers
-On the previous chart, we focused only on one container, but we can also want to have the vision of all our ressources used by the containers.
+In the previous chart, we focused only on one container, but we can also want to have the vision of all our resources used by the containers.
 
 
 ```yaml
@@ -61,7 +61,7 @@ This shell command concatenates different command
  - `docker stats --no-stream --format {{.CPUPerc}} | awk '{sum += $0} END {print sum"%"}'` sums the CPU usage of all the containers
 
 
-With these textboxes components, you can see your running containers and the stopped containers. There should only be one enter for each kind of component ("textboxes" is not repeated).
+With these textboxes components, you can see your running containers and the stopped containers. There should only be one entry for each kind of component ("textboxes" is not repeated).
 ```yaml
   - title: Docker stats
     position: [[0, 20], [60, 15]]
@@ -78,8 +78,8 @@ With these textboxes components, you can see your running containers and the sto
 
 
 ## Printing the Redis data
-As we can exectute any shell command, we can create more complicated component.
-This one looked at the data in our redis store. One should pay attention that the CPU usage increases everytime, the updated are fetched.
+As we can execute any shell command, we can create more complicated components.
+This one looked at the data in our redis store. One should pay attention that the CPU usage increases every time, the updates are fetched.
 
 ```yaml
   - title: Redis Data
@@ -96,7 +96,7 @@ This one looked at the data in our redis store. One should pay attention that th
     sample: docker exec $containerName redis-cli keys \* | while read line ; do docker exec $containerName redis-cli get $line ; done
 ```{{copy}}
 
-You can try to add key value to your container in another terminl and see the data changed within 5s, the updating time.
+You can try to add a new key-value to your container in another terminal and see the data changed within 5s, the updating time.
 `docker exec myFirstRedisContainer redis-cli set apple 50kr`{{execute}}
 
 You should now have a nice dashboard:

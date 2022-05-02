@@ -1,7 +1,7 @@
 
 ## Installing sampler
 
-We will do the installaing on an linux OS. For other OS, see the sampler documentation
+We will install it on a linux OS. For other OS, see the sampler documentation
 ```
 sudo wget https://github.com/sqshq/sampler/releases/download/v1.1.0/sampler-1.1.0-linux-amd64 -O /usr/local/bin/sampler
 sudo chmod +x /usr/local/bin/sampler 
@@ -50,10 +50,10 @@ You can choose among different components :
     - barcharts
     - gauges
 
-Each component can be personalized by differents labels, for example we had above the 'title' and 'sample' labels. 
+Each component can be personalized by different labels, for example, we had above the 'title' and 'sample' labels. 
 
 ## A first component linked to our redis container
-Let's add to our config file to have a component that give us the keys store in our container, change the below text with your containerId.
+Let's add to our config file a component that gives us the keys stored in our container.
 
 ```yaml
 textboxes:
@@ -66,14 +66,14 @@ Your first dashboard
 <br>
 <img src="assets/first_dashboard.jpeg" width="80%">
 
-As you can see from our two component examples, there is a 'title' attribute and the 'sample' attribute. There are the two mandatory attributes to every component. The 'sample' attribute takes a shell command as a value, the same one we typed before. 
+As you can see from our two components example, there are a 'title' and  'sample' attributes. There are the two mandatory attributes to every component. The 'sample' attribute takes a shell command as a value. Here it is the same one as we typed before. 
 
 This config file works well, but it can be improved by using variables. We can add at the beginning of our file the list of the needed variables:
 ```yaml
 variables:
   containerName: myFirstRedisContainer
 ```{{copy}}
-And replace all the written in hard copy containerName by `$containerName`, as seen above the variable can be overwritten when running the config by `sampler -e containerName=${yourNewContainerName} -c config.yml`
+And replace all the written in hard copy "containerName" by `$containerName`. The variable can be overwritten when running the config by `sampler -e containerName=$ {yourNewContainerName} -c config.yml`
 
 
 
